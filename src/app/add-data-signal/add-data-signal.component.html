@@ -1,0 +1,73 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div style="text-align: center">
+    <h1>{{message}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <fieldset>
+                    <legend class="text-center">Add application data signal</legend>
+
+                    <div class="form-group">
+                        <label for="clientId"> Client Id: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.clientId" name="clientId" id="clientId"
+                            class="form-control phone" maxlength="500" placeholder="Enter client id" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="symbol"> Symbol: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.symbol" name="symbol" id="symbol"
+                            class="form-control phone" maxlength="500" placeholder="Enter symbol" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeframe"> Timeframe: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.timeframe" name="timeframe" id="timeframe"
+                            class="form-control phone" maxlength="500" placeholder="Enter Timeframe" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price"> Price: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.price" name="price" id="price"
+                            class="form-control phone" placeholder="Enter Price" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currency"> Currency: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.currency" name="currency" id="currency"
+                            class="form-control phone" maxlength="500" placeholder="Enter Currency" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="baseCurrency"> Base Currency: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.baseCurrency" name="baseCurrency" id="baseCurrency"
+                            class="form-control phone" maxlength="500" placeholder="Enter Base Currency" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updatedTime"> Updated Time: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.updatedTime" name="updatedTime" id="updatedTime"
+                            class="form-control phone" maxlength="500" placeholder="Enter Updated Time" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments"> Comments: </label>
+                        <input required type="text" [(ngModel)]="dataSignal.comments" name="comments" id="comments"
+                            class="form-control phone" maxlength="5000" placeholder="Enter Comments" />
+                    </div>
+
+                    <div class="form-group">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Add Data Signal" (click)="addDataSignal()">
+                    </div>
+                </fieldset>
+            </form><!-- ends register form -->
+            <!-- second for to fiter user-->
+        </div><!-- ends col-6 -->
+
+    </div>
+</div>
