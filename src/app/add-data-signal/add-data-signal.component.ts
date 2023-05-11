@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSignal } from '../model/data-signal';
 import { DataSignalService } from '../services/data-signal.service';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-add-data-signal',
@@ -10,11 +11,15 @@ import { DataSignalService } from '../services/data-signal.service';
 export class AddDataSignalComponent implements OnInit{
 
   dataSignal: DataSignal=new DataSignal("","","",0,"","","","");
-  message:any;
+  dataSignals: any;
+  message: any;
+  showMessage: boolean;
 
-  constructor(private dataSignalService:DataSignalService) { }
+  constructor(private dataSignalService:DataSignalService,
+    public loaderService: LoaderService) { }
 
   ngOnInit() {
+    this.getDataSignals();
   }
 
   public addDataSignal(){
@@ -31,6 +36,23 @@ export class AddDataSignalComponent implements OnInit{
     }
 
     let response = this.dataSignalService.addDataSignal(dataSignalObject);
-    response.subscribe((data)=>this.message=data);
+    response.subscribe((data)=> {
+      let dataObj = JSON.parse(data.toString());
+      this.showMessage = true;
+      this.message=dataObj.message;
+      this.getDataSignals();
+      setTimeout(() => {
+        this.showMessage = false;
+      }, 2500);
+    }
+    );
   }
+
+  public getDataSignals(){
+    let response=this.dataSignalService.getDataSignals();
+    response.subscribe((data)=> {
+      this.dataSignals=data;
+    });
+  }
+  
 }

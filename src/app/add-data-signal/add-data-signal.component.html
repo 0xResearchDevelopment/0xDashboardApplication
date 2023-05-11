@@ -1,14 +1,16 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<div style="text-align: center">
-    <h1>{{message}}</h1>
+<div *ngIf="loaderService.isLoading | async" class="spinner-icon"></div>
+
+<div class="row center" *ngIf="showMessage">
+    <div class="col-xs-12">
+      <p class="alert alert-success" style="text-align: center">
+          <strong>{{message}}</strong>
+      </p>
+    </div>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <form>
                 <fieldset>
                     <legend class="text-center">Add application data signal</legend>
@@ -68,6 +70,35 @@
             </form><!-- ends register form -->
             <!-- second for to fiter user-->
         </div><!-- ends col-6 -->
+
+        <div class="row col-md-8 custyle">
+            <table class="table table-striped custab">
+            <thead>
+                <tr>
+                    <th>Client Id</th>
+                    <th>Symbol</th>
+                    <th>Timeframe</th>
+                    <th>Price</th>
+                    <th>Currency</th>
+                    <th>Base Currency</th>
+                    <th>Updated Time</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dataSignal of dataSignals">
+                    <td>{{dataSignal.client_id}}</td>
+                    <td>{{dataSignal.symbol}}</td>
+                    <td>{{dataSignal.timeframe}}</td>
+                    <td>{{dataSignal.price}}</td>
+                    <td>{{dataSignal.currency}}</td>
+                    <td>{{dataSignal.base_currency}}</td>
+                    <td>{{dataSignal.updated_time}}</td>
+                    <td>{{dataSignal.comments}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
 
     </div>
 </div>
